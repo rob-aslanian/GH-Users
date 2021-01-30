@@ -1,0 +1,6 @@
+<div class="keyword animate__animated animate__zoomIn" *ngIf="keyword">
+  <button class="content" (click)="redirect()">{{ keyword }}</button>
+  <button class="delete" (click)="remove()">
+    <fa-icon [icon]="icon"></fa-icon>
+  </button>
+</div>

@@ -1,0 +1,22 @@
+<gh-search></gh-search>
+
+<div class="users">
+  <div class="users-head">
+    <h2>Github moust popular users</h2>
+    <div class="views" *ngIf="stateService.viewState | async as state">
+      <ng-container *ngFor="let viewState of viewStates | keyvalue">
+        <button
+          [ngClass]="{ active: viewState.value === state }"
+          (click)="
+            viewState.value !== state ? changeView(viewState.value) : null
+          "
+        >
+          <fa-icon
+            [icon]="viewState.value === viewStates.GRID ? icGrid : icList"
+          ></fa-icon>
+        </button>
+      </ng-container>
+    </div>
+  </div>
+  <gh-user-container></gh-user-container>
+</div>

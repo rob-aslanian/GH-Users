@@ -1,0 +1,58 @@
+<div class="user-detail" *ngIf="user$ | asyncState | async as user">
+  <gh-loader *ngIf="user?.loading"></gh-loader>
+
+  <button class="back-btn" (click)="back()">
+    <fa-icon [icon]="btnIcon"></fa-icon>
+    Back
+  </button>
+
+  <ng-container *ngIf="user.value as value">
+    <div class="user-detail--head">
+      <h1 *ngIf="value._name as name">{{ value._name }}</h1>
+    </div>
+    <div class="user-detail--content">
+      <div class="user-detail--content--avatar">
+        <gh-user-avatar [url]="value.avatar_url"></gh-user-avatar>
+      </div>
+
+      <div class="user-detail--content--info">
+        <div class="user--info">
+          <h2 *ngIf="value._name as name">
+            <a [href]="value.html_url" target="_blank">{{ name }}</a>
+          </h2>
+          <span *ngIf="value.type as type">{{ type }}</span>
+        </div>
+        <div class="user--repos">
+          <span>User repos</span>
+          <gh-user-repos [repos$]="value.repos"></gh-user-repos>
+        </div>
+
+        <div class="user--orgs">
+          <span>User organizations</span>
+          <ng-container *ngIf="value.orgs | async as orgs">
+            <ul *ngIf="orgs?.length; else noOrgs">
+              <li *ngFor="let org of orgs">
+                <img [src]="org.avatar_url" alt="" />
+                <a
+                  [href]="'https://www.github.com/' + org._name"
+                  target="_blank"
+                >
+                  {{ org._name }}
+                </a>
+              </li>
+            </ul>
+            <ng-template #noOrgs>
+              <p>No organizations to display</p>
+            </ng-template>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="user?.error as error">
+    <h1 class="error-msg" *ngIf="error?.error?.message as message">
+      {{ message }}
+    </h1>
+  </ng-container>
+</div>

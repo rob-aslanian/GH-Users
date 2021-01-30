@@ -1,0 +1,14 @@
+<gh-loader *ngIf="!users.length && isLoading"></gh-loader>
+<ng-container *ngIf="users?.length">
+  <gh-infinity-scroll
+    (scrolled)="onScroll($event, users[users.length - 1].id)"
+    [class]="stateService.viewState.getValue().toLowerCase()"
+  >
+    <gh-user-box
+      *ngFor="let user of users"
+      [user]="user"
+      [view]="stateService.viewState | async"
+    ></gh-user-box>
+  </gh-infinity-scroll>
+  <gh-loader *ngIf="isLoading"></gh-loader>
+</ng-container>

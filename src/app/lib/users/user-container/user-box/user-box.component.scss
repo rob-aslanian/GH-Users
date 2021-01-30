@@ -1,0 +1,64 @@
+@import "src/assets/styles/main.scss";
+.user {
+  background: $white;
+  color: $blackish;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border-radius: 3px;
+  @include box-shadow(0px, 7px, 29px, rgba(100, 100, 111, 0.2));
+
+  // List
+  &.list {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    max-height: 150px;
+    .user-main {
+      display: flex;
+      flex-basis: 80%;
+
+      &--avatar {
+        &::ng-deep > gh-user-avatar img {
+          width: 150px;
+          &.placeholder-content {
+            height: 150px;
+          }
+        }
+      }
+
+      &--info {
+        margin-left: 1rem;
+      }
+    }
+    .user-repos {
+      flex-basis: 20%;
+    }
+  }
+
+  // Grid
+  &.grid {
+    display: flex;
+    flex-direction: column;
+    max-height: 350px;
+    overflow: hidden;
+    .user-main {
+      text-align: center;
+
+      &--avatar {
+        &::ng-deep > gh-user-avatar img {
+          width: 125px;
+          &.placeholder-content {
+            height: 125px;
+          }
+        }
+      }
+
+      &--info {
+        margin: 1rem 0;
+      }
+    }
+    .user-repos {
+      flex-basis: 20%;
+    }
+  }
+}

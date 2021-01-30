@@ -1,0 +1,51 @@
+@import "../../../../assets/styles/main.scss";
+
+.user-detail {
+  .back-btn {
+    @include button($blackish, $white);
+  }
+
+  &--head,
+  .user--info,
+  .user--repos {
+    margin: 1.25rem 0;
+    border-bottom: 1px solid $blackish;
+  }
+
+  &--content {
+    display: flex;
+    &--avatar {
+      margin-right: 2rem;
+      flex-basis: 25%;
+      &::ng-deep > gh-user-avatar img {
+        width: 300px;
+        &.placeholder-content {
+          height: 300px;
+        }
+      }
+    }
+
+    &--info {
+      flex-basis: 61%;
+    }
+  }
+
+  .user--info {
+    margin-top: 0;
+    padding-bottom: 1.25rem;
+  }
+
+  .user--orgs {
+    img {
+      width: 35px;
+      height: 35px;
+      margin-right: 1rem;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      margin-top: 1rem;
+    }
+  }
+}

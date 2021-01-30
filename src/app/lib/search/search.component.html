@@ -1,0 +1,34 @@
+<div class="search">
+  <form class="search-input" (submit)="redirect()">
+    <input
+      type="search"
+      name="search"
+      autocomplete="off"
+      placeholder="Search user from GitHub"
+      [ngClass]="{ invalid: errorMsg }"
+      [(ngModel)]="userName"
+      (ngModelChange)="search()"
+    />
+    <ng-container *ngIf="user">
+      <div
+        class="user-mini animate__animated animate__fadeInRight"
+        (click)="redirect()"
+      >
+        <img [src]="user?.avatar_url" alt="avatar" />
+        <span *ngIf="user?._name as name">{{ name }}</span>
+      </div>
+    </ng-container>
+
+    <span
+      class="error-msg animate__animated animate__fadeInDown"
+      *ngIf="errorMsg"
+    >
+      {{ errorMsg }}
+    </span>
+    <button type="submit" [disabled]="errorMsg">
+      <fa-icon [icon]="icon"></fa-icon>
+      Search
+    </button>
+  </form>
+  <gh-search-keywords></gh-search-keywords>
+</div>

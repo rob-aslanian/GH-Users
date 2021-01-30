@@ -1,0 +1,11 @@
+.keywords {
+  text-align: center;
+  width: 75%;
+  margin: 1rem auto;
+  &-content {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,21 @@
+<ng-container *ngIf="repos$">
+  <gh-infinity-scroll (scrolled)="onVisible($event)">
+    <ng-container *ngIf="isVisible">
+      <div class="user-repos" *ngIf="repos$ | asyncState | async as repos">
+        <ng-container *ngIf="repos.loading">
+          <div class="placeholder-content"></div>
+          <div class="placeholder-content"></div>
+          <div class="placeholder-content"></div>
+        </ng-container>
+        <ul *ngIf="repos.value?.length; else noRepos">
+          <li *ngFor="let repo of repos.value">
+            <a [href]="repo.clone_url" target="_blank">{{ repo._name }}</a>
+          </li>
+        </ul>
+        <ng-template #noRepos>
+          <p>No repos to display</p>
+        </ng-template>
+      </div>
+    </ng-container>
+  </gh-infinity-scroll>
+</ng-container>

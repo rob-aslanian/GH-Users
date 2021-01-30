@@ -1,0 +1,22 @@
+<div
+  class="animate__animated animate__fadeInUp"
+  [class]="'user ' + view?.toLowerCase()"
+  *ngIf="user"
+>
+  <div class="user-main">
+    <div class="user-main--avatar">
+      <gh-user-avatar [url]="user.avatar_url"></gh-user-avatar>
+    </div>
+    <div class="user-main--info">
+      <h3 *ngIf="user._name as name">
+        <a [routerLink]="name">{{ name }}</a>
+      </h3>
+      <span *ngIf="user.type as type">{{ type }}</span>
+    </div>
+  </div>
+
+  <div class="user-repos">
+    <span>User repos</span>
+    <gh-user-repos [repos$]="user.repos" class="user-repos"></gh-user-repos>
+  </div>
+</div>

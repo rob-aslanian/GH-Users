@@ -1,0 +1,19 @@
+@import "src/assets/styles/main.scss";
+
+.users {
+  margin-top: 2rem;
+  &-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $dark-grey;
+    padding-bottom: 1rem;
+  }
+}
+
+button {
+  &.active {
+    color: $egg_yellow;
+  }
+  @include button(transparent, white);
+}

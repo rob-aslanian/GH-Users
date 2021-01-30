@@ -1,0 +1,50 @@
+@import "../../../assets/styles/main";
+
+.search {
+  display: flex;
+  flex-direction: column;
+
+  .user-mini {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    background: $blackish;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    img {
+      height: 30px;
+      width: 30px;
+      margin-right: 0.5rem;
+    }
+  }
+  &-input {
+    width: 100%;
+    position: relative;
+    input {
+      width: 100%;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      padding: 1rem;
+      &.invalid {
+        border-color: $red;
+      }
+    }
+    display: flex;
+    justify-content: center;
+
+    .error-msg {
+      position: absolute;
+      bottom: -25px;
+      left: 0;
+    }
+  }
+}
+button {
+  @include button($egg_yellow, $white);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}

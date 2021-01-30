@@ -1,0 +1,11 @@
+<div class="keywords" *ngIf="keywords$ | async as keywords">
+  <ng-container *ngIf="keywords?.length">
+    <h4>Last {{ keywords.length }} searches</h4>
+    <div class="keywords-content">
+      <gh-search-keyword
+        *ngFor="let keyword of keywords | reverse"
+        [keyword]="keyword"
+      ></gh-search-keyword>
+    </div>
+  </ng-container>
+</div>

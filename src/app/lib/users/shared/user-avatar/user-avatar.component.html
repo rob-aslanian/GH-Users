@@ -1,0 +1,10 @@
+<ng-container *ngIf="url">
+  <img class="placeholder-content" [hidden]="loaded" />
+  <img
+    class="avatar"
+    [src]="url"
+    alt="Avatart"
+    loading="lazy"
+    (load)="loaded = true"
+  />
+</ng-container>

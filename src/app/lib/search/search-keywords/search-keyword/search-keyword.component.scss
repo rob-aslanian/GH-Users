@@ -1,0 +1,11 @@
+@import "src/assets/styles/main.scss";
+
+.keyword {
+  display: flex;
+  .content {
+    @include button($blackish, $white);
+  }
+  .delete {
+    @include button($egg_yellow, $white);
+  }
+}

@@ -16,12 +16,21 @@ export class TokenInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    const cloneReq = request.clone({
+    let cloneReq = request.clone({
       setHeaders: {
         Accept: 'application/vnd.github.v3+json',
-        Authorization: `token ${this.apiConfig.token}`,
       },
     });
+
+    if (this.apiConfig.token) {
+      cloneReq = cloneReq.clone({
+        setHeaders: {
+          Authorization: `token ${this.apiConfig.token}`,
+        },
+      });
+    }
+
+    console.log(cloneReq.headers);
 
     return next.handle(cloneReq);
   }

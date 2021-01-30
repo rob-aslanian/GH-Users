@@ -16,7 +16,7 @@ export class UserService {
     private readonly http: HttpClient
   ) {}
 
-  getUsers(since?: number, count: number = 10): Observable<IUser[]> {
+  getUsers(since?: number, count: number = 6): Observable<IUser[]> {
     let params = this.getRequestCountParams(count);
     if (since) {
       params = params.set('since', String(since));

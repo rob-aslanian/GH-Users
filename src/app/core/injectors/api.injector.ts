@@ -2,7 +2,7 @@ import { InjectionToken } from '@angular/core';
 
 export interface ApiConfig {
   path: string;
-  token: string;
+  token?: string;
 }
 
 export const API_CONFIG = new InjectionToken<ApiConfig>(
@@ -11,7 +11,7 @@ export const API_CONFIG = new InjectionToken<ApiConfig>(
     providedIn: 'root',
     factory: () => ({
       path: 'https://api.github.com/users',
-      token: 'a6f468de34e09210329ed2a19f6bef8393e85b9d',
+      // token: 'YOUR_TOKEN',
     }),
   }
 );
